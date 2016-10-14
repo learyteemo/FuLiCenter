@@ -1,11 +1,11 @@
-package cn.ucai.filicenter.activity;
+package cn.ucai.fulicenter.activity;
 
-import android.content.Intent;
-import android.provider.Settings;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.ucai.filicenter.R;
+import cn.ucai.fulicenter.utils.MFGT;
 
 public class SplshActivity extends AppCompatActivity {
     static final long sleepTime = 2000;
@@ -19,7 +19,14 @@ public class SplshActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        new Thread(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MFGT.gotoMainActivity(SplshActivity.this);
+                finish();
+            }
+        },sleepTime);
+       /* new Thread(new Runnable() {
             @Override
             public void run() {
                long startTime =  System.currentTimeMillis();
@@ -34,9 +41,11 @@ public class SplshActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                startActivity(new Intent(SplshActivity.this,MainActivity.class));
-                finish();
+                *//*startActivity(new Intent(SplshActivity.this,MainActivity.class));
+                finish();*//*
+                MFGT.startActivity(SplshActivity.this,MainActivity.class);
+                MFGT.finish(SplshActivity.this);
             }
-        }).start();
+        }).start();*/
     }
 }
