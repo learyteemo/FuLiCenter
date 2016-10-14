@@ -1,4 +1,4 @@
-package cn.ucai.filicenter.bean;
+package cn.ucai.fulicenter.bean;
 
 public class MessageBean {
 

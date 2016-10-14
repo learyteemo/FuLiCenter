@@ -12,7 +12,7 @@
     </RelativeLayout>
     <View
         android:id="@+id/vline"
-        android:layout_above="@id/rg_button_layout"
+        android:layout_above="@+id/rg_button_layout"
         android:background="#FFCCCCCC"
         android:layout_width="match_parent"
         android:layout_height="3px"/>

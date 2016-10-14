@@ -1,4 +1,4 @@
-package cn.ucai.filicenter.bean;
+package cn.ucai.fulicenter.bean;
 
 /**
  * Created by Administrator on 2016/10/13.
