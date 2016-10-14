@@ -35,7 +35,7 @@ public class SplshActivity extends AppCompatActivity {
                     }
                 }
                 startActivity(new Intent(SplshActivity.this,MainActivity.class));
-
+                finish();
             }
         }).start();
     }
