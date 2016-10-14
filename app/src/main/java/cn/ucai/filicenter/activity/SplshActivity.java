@@ -26,15 +26,16 @@ public class SplshActivity extends AppCompatActivity {
                 //creat db
                 long lastTime = System.currentTimeMillis();
                 long cost = lastTime - startTime;
-                if (cost>sleepTime){
+                if (cost<sleepTime){
 
                     try{
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    startActivity(new Intent(SplshActivity.this,MainActivity.class));
                 }
+                startActivity(new Intent(SplshActivity.this,MainActivity.class));
+
             }
         }).start();
     }
