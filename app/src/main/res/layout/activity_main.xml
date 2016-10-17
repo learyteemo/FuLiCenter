@@ -18,7 +18,7 @@
         android:layout_height="3px"/>
 
 
-    <RadioGroup
+    <LinearLayout
         android:layout_alignParentBottom="true"
         android:id="@+id/rg_button_layout"
         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
             android:textColor="@color/main_botton_text_color"
             android:gravity="center_horizontal"
             android:drawableTop="@drawable/selector_menu_item_personal_center" />
-    </RadioGroup>
+    </LinearLayout>
 
 
 </RelativeLayout>
