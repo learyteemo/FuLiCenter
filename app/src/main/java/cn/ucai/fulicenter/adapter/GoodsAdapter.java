@@ -14,40 +14,37 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.bean.NewGoodsBean;
-import cn.ucai.fulicenter.utils.I;
+import cn.ucai.fulicenter.I;
+import cn.ucai.fulicenter.utils.ImageLoader;
 
 /**
  * Created by Administrator on 2016/10/17.
  */
 
 public class GoodsAdapter extends RecyclerView.Adapter {
-
+    static final int TYPE_ITEM_GOODS = 0;
+    static final int TYPE_FOOTER = 1;
 
     List<NewGoodsBean> mList;
     Context context;
     RecyclerView parent;
     boolean isMore;
-
+    String Footer;
     public GoodsAdapter(List<NewGoodsBean> mList, Context context) {
         this.mList = mList;
         this.context = context;
     }
-
     public void setFooter(String footer) {
-        Footer = footer;
+
         notifyDataSetChanged();
     }
 
-    String Footer;
     public boolean isMore() {
         return isMore;
     }
-
     public void setMore(boolean more) {
         isMore = more;
     }
-
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -77,6 +74,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
         NewGoodsBean newGoods = mList.get(position);
         goodsViewHolder.tvGoodsMoney.setText(newGoods.getCurrencyPrice());
         goodsViewHolder.tvGoodsName.setText(newGoods.getGoodsName());
+        ImageLoader.downloadImg(context,goodsViewHolder.ivGoodsThumb,newGoods.getGoodsThumb());
 
     }
 
