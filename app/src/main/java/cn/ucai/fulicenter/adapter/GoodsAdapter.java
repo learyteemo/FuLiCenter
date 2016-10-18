@@ -29,7 +29,6 @@ import cn.ucai.fulicenter.utils.MFGT;
 public class GoodsAdapter extends RecyclerView.Adapter {
     List<NewGoodsBean> mList;
     Context context;
-
     RecyclerView parent;
     boolean isMore;
 
@@ -140,6 +139,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
         @OnClick(R.id.item_newGoods)
         public void onGoodsItemClick() {
             int goodsId = (int) itemNewGoods.getTag();

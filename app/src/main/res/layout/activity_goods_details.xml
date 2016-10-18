@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:id="@+id/Linlayout_GoodsDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:weightSum="9"
         android:background="@color/main_orange">
+
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:src="@drawable/back" />
         <TextView
+            android:layout_weight="5"
+
             android:id="@+id/tvGoodsDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="商品详情"
             android:textSize="25dp"
             android:textColor="#fff"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center_vertical"/>
         <RelativeLayout
+            android:layout_weight="1"
             android:id="@+id/GoodsDetailLayout"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_marginLeft="90dp">
             <ImageView
@@ -42,12 +49,14 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/ivGoodsDetailCollect"
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:src="@mipmap/bg_collect_in"
             android:layout_marginLeft="20dp"/>
         <ImageView
+            android:layout_weight="1"
             android:id="@+id/ivGoodsDetailShare"
             android:layout_width="30dp"
             android:layout_height="match_parent"
@@ -96,20 +105,28 @@
                 android:textSize="25dp"
                 android:textColor="#FFE70810"
                 android:layout_alignParentRight="true" />
-            <android.support.v4.view.ViewPager
+            <cn.ucai.fulicenter.views.SlideAutoLoopView
                 android:layout_marginTop="10dp"
-                android:id="@+id/viewPager"
+                android:id="@+id/slideAutoLoopView"
                 android:layout_below="@+id/tvGoodsName"
                 android:layout_above="@+id/flowIndicator"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </android.support.v4.view.ViewPager>
+                android:layout_height="match_parent"
+                android:background="@color/good_detail_bg_white">
+            </cn.ucai.fulicenter.views.SlideAutoLoopView>
             <cn.ucai.fulicenter.views.FlowIndicator
                 android:id="@+id/flowIndicator"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/webView" />
+                android:layout_above="@+id/webView"
+                app:count="4"
+                app:focus="0"
+                app:focus_color="@color/good_detaul_flow_indicator_focus"
+                app:normal_color="#a1d1d1d1"
+                app:r="9dp"
+                app:space="3dp" />
             <WebView
+                android:layout_marginTop="5dp"
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
