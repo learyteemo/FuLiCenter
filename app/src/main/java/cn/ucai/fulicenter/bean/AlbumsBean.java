@@ -1,34 +1,13 @@
 package cn.ucai.fulicenter.bean;
 
-/**
- * Created by Administrator on 2016/10/13.
- */
-public class AlbumsBean {
+import java.io.Serializable;
 
-    /**
-     * pid : 6936
-     * imgId : 26104
-     * imgUrl : 201508/goods_img/6936_P_1439535131675.png
-     * thumbUrl : no_picture.gif
-     */
+public class AlbumsBean implements Serializable {
 
     private int pid;
     private int imgId;
     private String imgUrl;
     private String thumbUrl;
-
-    public AlbumsBean() {
-    }
-
-    @Override
-    public String toString() {
-        return "AlbumsBean{" +
-                "pid=" + pid +
-                ", imgId=" + imgId +
-                ", imgUrl='" + imgUrl + '\'' +
-                ", thumbUrl='" + thumbUrl + '\'' +
-                '}';
-    }
 
     public int getPid() {
         return pid;
@@ -60,5 +39,15 @@ public class AlbumsBean {
 
     public void setThumbUrl(String thumbUrl) {
         this.thumbUrl = thumbUrl;
+    }
+
+    @Override
+    public String toString() {
+        return "AlbumsBean{" +
+                "pid=" + pid +
+                ", imgId=" + imgId +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", thumbUrl='" + thumbUrl + '\'' +
+                '}';
     }
 }

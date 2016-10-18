@@ -56,7 +56,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
     }
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position)==I.TYPE_FOOTER){
+        if (position==getItemCount()-1){
             FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
             footerViewHolder.tvFooter.setText(getFooter());
             return ;
@@ -74,7 +74,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mList != null ? mList.size() + 1 : 1;
+        return mList == null ? 0:mList.size() + 1;
     }
     @Override
     public int getItemViewType(int position) {
@@ -86,9 +86,14 @@ public class GoodsAdapter extends RecyclerView.Adapter {
     }
     public void initData(ArrayList<NewGoodsBean> list) {
     if (mList!=null){
-        mList.clear();
+        this.mList.clear();
     }
-        mList.addAll(list);
+        this.mList.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void addData(ArrayList<NewGoodsBean> list) {
+        this.mList.addAll(list);
         notifyDataSetChanged();
     }
 
