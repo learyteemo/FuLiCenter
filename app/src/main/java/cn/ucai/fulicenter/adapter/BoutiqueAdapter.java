@@ -13,10 +13,12 @@ import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.bean.BoutiqueBean;
 import cn.ucai.fulicenter.utils.ImageLoader;
+import cn.ucai.fulicenter.utils.MFGT;
 import cn.ucai.fulicenter.views.FooterViewHolder;
 
 /**
@@ -66,6 +68,8 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             boutiqueViewHolder.tvBoutiqueTitle.setText(boutiqueBean.getTitle());
             boutiqueViewHolder.tvBoutiqueName.setText(boutiqueBean.getName());
             boutiqueViewHolder.ivBoutiqueDescription.setText(boutiqueBean.getDescription());
+            boutiqueViewHolder.layoutBoutique.setTag(boutiqueBean);
+
             ImageLoader.downloadImg(mcontext,boutiqueViewHolder.ivBoutiqueThumb,boutiqueBean.getImageurl());
         }
     }
@@ -99,7 +103,7 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         notifyDataSetChanged();
     }
 
-    static class BoutiqueViewHolder extends RecyclerView.ViewHolder{
+     class BoutiqueViewHolder extends RecyclerView.ViewHolder{
         @Bind(R.id.ivBoutiqueThumb)
         ImageView ivBoutiqueThumb;
         @Bind(R.id.tvBoutiqueTitle)
@@ -115,5 +119,10 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+         @OnClick(R.id.layout_boutique)
+         public void onBoutiqueClick(){
+             BoutiqueBean  bean = (BoutiqueBean) layoutBoutique.getTag();
+             MFGT.gotoBoutiqueChildActivity(mcontext,bean);
+         }
     }
 }

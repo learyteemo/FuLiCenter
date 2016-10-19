@@ -36,8 +36,8 @@ public class GoodsDetails extends BaseActivity {
     @Bind(R.id.webView)
     WebView mwebView;
 
-
-    public void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_goods_details);
 
         ButterKnife.bind(this);

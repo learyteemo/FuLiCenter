@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity {
     int currentIndex;
     RadioButton [] rbs;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         L.i("MainActivity create");

@@ -6,8 +6,10 @@ import android.content.Intent;
 
 import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.I;
+import cn.ucai.fulicenter.activity.BoutiqueChildActivity;
 import cn.ucai.fulicenter.activity.GoodsDetails;
 import cn.ucai.fulicenter.activity.MainActivity;
+import cn.ucai.fulicenter.bean.BoutiqueBean;
 
 
 public class MFGT {
@@ -21,18 +23,23 @@ public class MFGT {
     public static void startActivity(Activity context,Class<?> cls){
         Intent intent = new Intent();
         intent.setClass(context,cls);
-        context.startActivity(intent);
-        context.overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+        startActivity(context,intent);
+
     }
     public static void gotoGoodsDetailsActivity(Context context, int goodsId){
         Intent intent = new Intent();
         intent.setClass(context, GoodsDetails.class);
         intent.putExtra(I.GoodsDetails.KEY_GOODS_ID,goodsId);
         context.startActivity(intent);
+    }
+    public static void startActivity(Context context,Intent intent){
+        context.startActivity(intent);
         ((Activity)context).overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
     }
-    public static void startActivity(Activity context,Intent intent){
+    public static void gotoBoutiqueChildActivity(Context context, BoutiqueBean bean){
+        Intent intent = new Intent();
+        intent.setClass(context, BoutiqueChildActivity.class);
+        intent.putExtra(I.Boutique.CAT_ID,bean);
         context.startActivity(intent);
-        context.overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
     }
 }

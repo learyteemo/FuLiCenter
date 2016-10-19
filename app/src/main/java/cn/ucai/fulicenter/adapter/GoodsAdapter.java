@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.I;
+import cn.ucai.fulicenter.activity.BoutiqueChildActivity;
 import cn.ucai.fulicenter.activity.GoodsDetails;
 import cn.ucai.fulicenter.bean.NewGoodsBean;
 import cn.ucai.fulicenter.utils.ImageLoader;
@@ -39,6 +40,8 @@ public class GoodsAdapter extends RecyclerView.Adapter {
         this.context = context;
         this.mList.addAll(mList);
     }
+
+
 
     /* public void setFooter(String footer) {
          notifyDataSetChanged();

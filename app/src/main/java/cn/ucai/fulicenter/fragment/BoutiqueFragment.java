@@ -31,8 +31,6 @@ import cn.ucai.fulicenter.utils.L;
  * A simple {@link Fragment} subclass.
  */
 public class BoutiqueFragment extends BaseFragment {
-
-
     @Bind(R.id.tvRefresh)
     TextView mtvRefresh;
     @Bind(R.id.RecyclerView)

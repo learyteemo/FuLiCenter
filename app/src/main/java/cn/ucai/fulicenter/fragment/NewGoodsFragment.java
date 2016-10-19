@@ -30,10 +30,11 @@ import cn.ucai.fulicenter.views.SpaceItemDecoration;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewGoodsFragment extends Fragment {
+public  class NewGoodsFragment extends BaseFragment {
     SwipeRefreshLayout mSwipeRefreshLayout;
     TextView mRefresh;
     RecyclerView mRecyclerView;
+
     MainActivity mContext;
     GoodsAdapter mAdapter;
     GridLayoutManager mLayoutManager ;
@@ -54,52 +55,53 @@ public class NewGoodsFragment extends Fragment {
         mRefresh = (TextView) view.findViewById(R.id.tvRefresh);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.RecyclerView);
         mAdapter = new GoodsAdapter(mList,mContext);
-        initView();
+        super.onCreateView(inflater,container,savedInstanceState);
+        /* initView();
         initData();
-        setListener();
+        setListener();*/
         return view;
     }
-
-    private void setListener() {
+    @Override
+    protected void setListener() {
         setPullUpListener();
         setPullDownListener();
     }
 
     private void setPullDownListener() {
-    mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-        @Override
-        public void onRefresh() {
-            mSwipeRefreshLayout.setRefreshing(true);
-            mRefresh.setVisibility(View.VISIBLE);
-            mPageId = 1;
-            downloadNewGoods(I.ACTION_PULL_DOWN);
-        }
-    });
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mSwipeRefreshLayout.setRefreshing(true);
+                mRefresh.setVisibility(View.VISIBLE);
+                mPageId = 1;
+                downloadNewGoods(I.ACTION_PULL_DOWN);
+            }
+        });
     }
 
     private void setPullUpListener() {
-    mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-            int lastPosition = mLayoutManager.findLastVisibleItemPosition();
-            if (newState==RecyclerView.SCROLL_STATE_IDLE
-                    &&lastPosition==mAdapter.getItemCount()-1&&mAdapter.isMore()){
-                mPageId++;
-                downloadNewGoods(I.ACTION_PULL_UP);
+        mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                int lastPosition = mLayoutManager.findLastVisibleItemPosition();
+                if (newState==RecyclerView.SCROLL_STATE_IDLE
+                        &&lastPosition==mAdapter.getItemCount()-1&&mAdapter.isMore()){
+                    mPageId++;
+                    downloadNewGoods(I.ACTION_PULL_UP);
+                }
             }
-        }
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            int firstPosition = mLayoutManager.findFirstVisibleItemPosition();
-            mSwipeRefreshLayout.setEnabled(firstPosition==0);
-        }
-    });
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int firstPosition = mLayoutManager.findFirstVisibleItemPosition();
+                mSwipeRefreshLayout.setEnabled(firstPosition==0);
+            }
+        });
     }
 
     private void downloadNewGoods(final int action) {
-        NetDao.downloadNewGoods(mContext, mPageId, new OkHttpUtils.OnCompleteListener<NewGoodsBean[]>() {
+        NetDao.downloadNewGoods(mContext,I.CAT_ID, mPageId, new OkHttpUtils.OnCompleteListener<NewGoodsBean[]>() {
             @Override
             public void onSuccess(NewGoodsBean[] result) {
                 mSwipeRefreshLayout.setRefreshing(false);
@@ -131,11 +133,12 @@ public class NewGoodsFragment extends Fragment {
         });
     }
 
-
-    private void initData() {
+    @Override
+    protected void initData() {
         downloadNewGoods(I.ACTION_DOWNLOAD);
     }
-    private void initView() {
+    @Override
+    protected void initView() {
         mSwipeRefreshLayout.setColorSchemeColors(
                 getResources().getColor(R.color.google_blue),
                 getResources().getColor(R.color.google_green),
