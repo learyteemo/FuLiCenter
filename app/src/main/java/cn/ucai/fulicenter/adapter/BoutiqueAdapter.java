@@ -17,6 +17,7 @@ import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.bean.BoutiqueBean;
 import cn.ucai.fulicenter.utils.ImageLoader;
+import cn.ucai.fulicenter.views.FooterViewHolder;
 
 /**
  * Created by Administrator on 2016/10/19.
@@ -44,7 +45,7 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder holder = null;
         if (viewType == I.TYPE_FOOTER) {
-            holder = new GoodsAdapter.FooterViewHolder(LayoutInflater.from(mcontext).inflate(R.layout.item_footer, parent, false));
+            holder = new FooterViewHolder(LayoutInflater.from(mcontext).inflate(R.layout.item_footer, parent, false));
         } else {
             holder = new BoutiqueViewHolder(LayoutInflater.from(mcontext)
                     .inflate(R.layout.item_boutique, parent, false));
@@ -55,8 +56,8 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof GoodsAdapter.FooterViewHolder) {
-            GoodsAdapter.FooterViewHolder footerViewHolder = (GoodsAdapter.FooterViewHolder) holder;
+        if (holder instanceof FooterViewHolder) {
+            FooterViewHolder footerViewHolder = (FooterViewHolder) holder;
             footerViewHolder.tvFooter.setText(getFooter());
         }
         if (holder instanceof BoutiqueViewHolder) {
@@ -86,6 +87,18 @@ public class BoutiqueAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             return I.TYPE_ITEM;
         }
     }
+    public void initData(ArrayList<BoutiqueBean> list) {
+        if (mList != null) {
+            this.mList.clear();
+        }
+        this.mList.addAll(list);
+        notifyDataSetChanged();
+    }
+    public void addData(ArrayList<BoutiqueBean> list) {
+        this.mList.addAll(list);
+        notifyDataSetChanged();
+    }
+
     static class BoutiqueViewHolder extends RecyclerView.ViewHolder{
         @Bind(R.id.ivBoutiqueThumb)
         ImageView ivBoutiqueThumb;
