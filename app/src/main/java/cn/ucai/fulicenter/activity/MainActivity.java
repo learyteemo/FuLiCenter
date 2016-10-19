@@ -16,7 +16,7 @@ import cn.ucai.fulicenter.fragment.BoutiqueFragment;
 import cn.ucai.fulicenter.fragment.NewGoodsFragment;
 import cn.ucai.fulicenter.utils.L;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     @Bind(R.id.newGood)
     RadioButton newGood;
     @Bind(R.id.boutique)
@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
     int currentIndex;
     RadioButton [] rbs;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         L.i("MainActivity create");
-        initView();
-        initFragment();
+       /* initView();
+        initFragment();*/
+        super.onCreate(savedInstanceState);
     }
     private void initFragment() {
         mfragment = new Fragment[5];
@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
 
     }
-    private void initView() {
+    @Override
+    protected void initView() {
         rbs = new RadioButton[5];
         rbs[0] = newGood;
         rbs[1] = boutique;
@@ -65,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
         rbs[3] = cart;
         rbs[4] = personal;
     }
+
+    @Override
+    protected void initData() {
+        initFragment();
+    }
+
+    @Override
+    protected void setListener() {
+
+    }
+
     public void onCheckedChange(View view) {
         switch (view.getId()){
             case R.id.newGood:
@@ -101,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRadioButtonStatus() {
+        L.e("index="+index);
         for (int i = 0 ;i<rbs.length;i++){
             if (i==index){
                 rbs[i].setChecked(true);
@@ -108,5 +121,10 @@ public class MainActivity extends AppCompatActivity {
                 rbs[i].setChecked(false);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

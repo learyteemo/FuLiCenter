@@ -20,7 +20,7 @@ import cn.ucai.fulicenter.utils.MFGT;
 import cn.ucai.fulicenter.views.FlowIndicator;
 import cn.ucai.fulicenter.views.SlideAutoLoopView;
 
-public class GoodsDetails extends AppCompatActivity {
+public class GoodsDetails extends BaseActivity {
     int goodsId;
     GoodsDetails mContext;
     @Bind(R.id.tvGoodsEnglishName)
@@ -37,10 +37,9 @@ public class GoodsDetails extends AppCompatActivity {
     WebView mwebView;
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_goods_details);
+
         ButterKnife.bind(this);
         goodsId = getIntent().getIntExtra(I.GoodsDetails.KEY_GOODS_ID, 0);
         L.e("edtails", "goodsid" + goodsId);
@@ -48,25 +47,27 @@ public class GoodsDetails extends AppCompatActivity {
             finish();
         }
         mContext = this;
-        initView();
+        /*initView();
         initData();
-        setListener();
+        setListener();*/
+        super.onCreate(savedInstanceState);
+    }
+    @Override
+    protected void setListener() {
+    }
+    @Override
+    protected void initView() {
+
     }
 
-    private void setListener() {
-    }
-
-    private void initView() {
-    }
-
-
-    private void initData() {
+    @Override
+    protected void initData() {
         NetDao.downloadGoodsDetail(mContext, goodsId, new OkHttpUtils.OnCompleteListener<GoodsDetailsBean>() {
             @Override
             public void onSuccess(GoodsDetailsBean result) {
                 L.i("details=" + result);
                 if (result != null) {
-                        showGoodDetails(result);
+                    showGoodDetails(result);
                 } else {
                     finish();
                 }
@@ -90,14 +91,14 @@ public class GoodsDetails extends AppCompatActivity {
     }
 
     private int getAlumbImgCount(GoodsDetailsBean details) {
-if (details.getProperties()!=null&&details.getProperties().length>0){
-    return details.getProperties()[0].getAlbums().length;
-}
+        if (details.getProperties()!=null&&details.getProperties().length>0){
+            return details.getProperties()[0].getAlbums().length;
+        }
         return 0;
     }
 
     private String[] getAlbumImgUrl(GoodsDetailsBean details) {
-    String[] urls = new String[]{};
+        String[] urls = new String[]{};
         if (details.getPromotePrice()!=null&&details.getProperties().length>0){
             AlbumsBean[] albums = details.getProperties()[0].getAlbums();
             urls = new String[albums.length];
