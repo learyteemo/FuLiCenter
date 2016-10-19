@@ -30,7 +30,7 @@ import cn.ucai.fulicenter.utils.L;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BoutiqueFragment extends Fragment {
+public class BoutiqueFragment extends BaseFragment {
 
 
     @Bind(R.id.tvRefresh)
@@ -59,13 +59,15 @@ public class BoutiqueFragment extends Fragment {
         ButterKnife.bind(this, view);
         mContext = (MainActivity) getContext();
         mList = new ArrayList<>();
-            mAdapter = new BoutiqueAdapter(mContext,mList);
-        initView();
+        mAdapter = new BoutiqueAdapter(mContext,mList);
+        super.onCreateView(inflater,container,savedInstanceState);
+        /*initView();
         initData();
-        setListener();
+        setListener();*/
         return view;
     }
-    private void setListener() {
+    @Override
+    protected void setListener() {
         setPullUpListener();
         setPullDownListener();
     }
@@ -102,8 +104,8 @@ public class BoutiqueFragment extends Fragment {
             }
         });
     }
-
-    private void initData() {
+        @Override
+    protected void initData() {
     downloadBoutique(I.ACTION_DOWNLOAD);
     }
 
@@ -140,8 +142,8 @@ public class BoutiqueFragment extends Fragment {
             }
         });
     }
-
-    private void initView() {
+    @Override
+    protected void initView() {
         mSwipeRefreshLayout.setColorSchemeColors(
                 getResources().getColor(R.color.google_yellow),
                 getResources().getColor(R.color.google_red),
