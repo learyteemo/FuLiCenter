@@ -26,8 +26,7 @@
             android:background="@null"
             android:text="上架时间"
             android:drawableRight="@drawable/arrow_order_down"
-            android:paddingRight="5dp"
-            />
+            android:paddingRight="5dp" />
     </LinearLayout>
     <include layout="@layout/fragment_new_goods"/>
 </LinearLayout>
