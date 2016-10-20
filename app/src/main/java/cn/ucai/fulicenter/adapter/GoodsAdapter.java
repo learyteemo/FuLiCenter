@@ -33,6 +33,7 @@ public class GoodsAdapter extends RecyclerView.Adapter {
     Context context;
     RecyclerView parent;
     boolean isMore;
+    int soryBy = I.SORT_BY_ADDTIME_DESC;
 
     //    String Footer;
     public GoodsAdapter(List<NewGoodsBean> mList, Context context) {
