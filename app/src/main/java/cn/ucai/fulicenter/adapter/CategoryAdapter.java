@@ -23,7 +23,6 @@ public class CategoryAdapter extends BaseExpandableListAdapter {
     Context mcontext;
     ArrayList<CategoryGroupBean> mGroupList;
     ArrayList<ArrayList<CategoryChildBean>> mChildList;
-
     public CategoryAdapter(Context context, ArrayList<CategoryGroupBean> GroupList,
                            ArrayList<ArrayList<CategoryChildBean>> ChildList) {
         mcontext = context;
@@ -32,44 +31,36 @@ public class CategoryAdapter extends BaseExpandableListAdapter {
         mChildList = new ArrayList<>();
         mChildList.addAll(ChildList);
     }
-
     @Override
     public int getGroupCount() {
         return mGroupList != null ? mGroupList.size() : 0;
     }
-
     @Override
     public int getChildrenCount(int groupPosition) {
         return mChildList != null && mChildList.get(groupPosition) != null ?
                 mChildList.get(groupPosition).size() : 0;
     }
-
     @Override
     public CategoryGroupBean getGroup(int groupPosition) {
         return mGroupList != null ? mGroupList.get(groupPosition) : null;
     }
-
     @Override
     public CategoryChildBean getChild(int groupPosition, int childPosition) {
         return mChildList != null && mChildList.get(groupPosition) != null ?
                 mChildList.get(groupPosition).get(childPosition) : null;
     }
-
     @Override
     public long getGroupId(int groupPosition) {
         return 0;
     }
-
     @Override
     public long getChildId(int groupPosition, int childPosition) {
         return 0;
     }
-
     @Override
     public boolean hasStableIds() {
         return false;
     }
-
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View view, ViewGroup parent) {
         GroupViewHolder holder;
@@ -112,6 +103,19 @@ public class CategoryAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return false;
     }
+
+    public void initData(ArrayList<CategoryGroupBean> groupList, ArrayList<ArrayList<CategoryChildBean>> childList) {
+    if (mGroupList!=null){
+        mGroupList.clear();
+    }
+        mGroupList.addAll(groupList);
+        if (mChildList!=null){
+            mChildList.clear();
+        }
+        mChildList.addAll(childList);
+        notifyDataSetChanged();
+    }
+
     class GroupViewHolder {
         @Bind(R.id.iv_group_thumb)
         ImageView mivGroupThumb;
