@@ -17,6 +17,7 @@ public interface I {
     /** 表示列表项布局的两种类型*/
     int TYPE_ITEM=0;
     int TYPE_FOOTER=1;
+    int REQUEST_CODE_REGISTER = 101;
 
     /** BeeColud APP ID */
     String BEE_COLUD_APP_ID = "3539b590-4859-4128-87a3-5fb8b86b94f6";
