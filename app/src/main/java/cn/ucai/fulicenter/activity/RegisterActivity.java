@@ -19,6 +19,7 @@ import cn.ucai.fulicenter.utils.MFGT;
 import cn.ucai.fulicenter.views.DisplayUtils;
 
 public class RegisterActivity extends BaseActivity {
+    private static final String TAG = RegisterActivity.class.getCanonicalName();
 
     @Bind(R.id.re_edUserName)
     EditText mredUserName;

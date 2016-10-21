@@ -24,7 +24,8 @@
         android:hint="密码"
         android:textSize="25dp"
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btnLogin"
