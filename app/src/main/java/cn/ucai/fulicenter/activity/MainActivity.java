@@ -16,6 +16,7 @@ import cn.ucai.fulicenter.fragment.BoutiqueFragment;
 import cn.ucai.fulicenter.fragment.CategoryFragment;
 import cn.ucai.fulicenter.fragment.NewGoodsFragment;
 import cn.ucai.fulicenter.utils.L;
+import cn.ucai.fulicenter.utils.MFGT;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.newGood)
@@ -98,7 +99,8 @@ public class MainActivity extends BaseActivity {
                 index = 3;
                 break;
             case R.id.personal:
-                index = 4;
+                MFGT.gotoLoginActivity(this);
+//                index = 4;
                 break;
         }
         setFragment();

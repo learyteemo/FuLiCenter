@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/commit_login_title"/>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:hint="用户名"
+        android:textSize="25dp"
+        android:id="@+id/re_edUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/icon_account"/>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/re_edNickName"
+        android:hint="昵称"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/icon_account"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:hint="密码"
+        android:textSize="25dp"
+        android:id="@+id/edPassword"
+        android:layout_width="match_parent"
+        android:drawableRight="@drawable/icon_pwd"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/edConfirmPassword"
+        android:hint="确认密码"
+        android:textSize="25dp"
+        android:drawableRight="@drawable/icon_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_marginTop="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="免费注册"
+        android:background="@color/main_orange"
+        android:layout_gravity="center"/>
+</LinearLayout>

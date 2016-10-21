@@ -4,13 +4,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import java.util.ArrayList;
+
 import cn.ucai.filicenter.R;
 import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.activity.BoutiqueChildActivity;
 import cn.ucai.fulicenter.activity.CategoryChildActivity;
 import cn.ucai.fulicenter.activity.GoodsDetails;
+import cn.ucai.fulicenter.activity.LoginActivity;
 import cn.ucai.fulicenter.activity.MainActivity;
+import cn.ucai.fulicenter.activity.RegisterActivity;
 import cn.ucai.fulicenter.bean.BoutiqueBean;
+import cn.ucai.fulicenter.bean.CategoryChildBean;
+import cn.ucai.fulicenter.bean.CategoryGroupBean;
 
 
 public class MFGT {
@@ -43,10 +49,20 @@ public class MFGT {
         intent.putExtra(I.Boutique.CAT_ID,bean);
         context.startActivity(intent);
     }
-    public static void gotoCategoryChildActivity(Context context, int catId){
+    public static void gotoCategoryChildActivity(Context context, int catId, String groupName
+    , ArrayList<CategoryChildBean> list){
         Intent intent = new Intent();
         intent.setClass(context, CategoryChildActivity.class);
         intent.putExtra(I.CategoryChild.CAT_ID,catId);
+        intent.putExtra(I.CategoryGroup.NAME,groupName);
+        intent.putExtra(I.CategoryChild.ID,list);
         context.startActivity(intent);
+    }
+
+    public static void gotoLoginActivity(Activity context) {
+        startActivity(context, LoginActivity.class);
+    }
+    public static void gotoRegisterActivity(Activity context) {
+        startActivity(context, RegisterActivity.class);
     }
 }

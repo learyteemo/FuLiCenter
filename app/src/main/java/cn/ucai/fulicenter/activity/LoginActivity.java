@@ -17,12 +17,6 @@ import cn.ucai.fulicenter.views.DisplayUtils;
 
 public class LoginActivity extends BaseActivity {
 
-    @Bind(R.id.ivBack)
-    ImageView mivBack;
-    @Bind(R.id.tvTitle)
-    TextView mtvTitle;
-    @Bind(R.id.commit_login_title)
-    RelativeLayout mcommitLoginTitle;
     @Bind(R.id.edUserName)
     EditText medUserName;
     @Bind(R.id.edPassword)
@@ -32,14 +26,18 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.btnRegister)
     Button mbtnRegister;
 
+    String username;
+    String password;
+
+    LoginActivity mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        mContext = this;
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
     protected void initView() {
         DisplayUtils.initBackWithTitle(this,"账户登录");
@@ -58,10 +56,11 @@ public class LoginActivity extends BaseActivity {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.btnLogin:
+                username = medUserName.getText().toString().trim();
+                password = medPassword.getText().toString().trim();
                 break;
             case R.id.btnRegister:
                 MFGT.gotoRegisterActivity(this);
-
                 break;
         }
     }
