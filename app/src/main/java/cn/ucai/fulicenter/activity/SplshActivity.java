@@ -13,6 +13,7 @@ import cn.ucai.fulicenter.utils.L;
 import cn.ucai.fulicenter.utils.MFGT;
 
 public class SplshActivity extends AppCompatActivity {
+    private static final String TAG = SplshActivity.class.getSimpleName();
     static final long sleepTime = 2000;
     SplshActivity mContext;
     @Override
@@ -21,7 +22,6 @@ public class SplshActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splsh);
         mContext = this;
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -29,11 +29,16 @@ public class SplshActivity extends AppCompatActivity {
             @Override
             public void run() {
                 User user =FuLiCenterApplication.getUser();
+                L.e(TAG,"fulicenter,user=" +user);
                 String username = SharePrefrenceUtils.getInstance(mContext).getUser();
-                if (user==null) {
+                L.e(TAG,"fulicenter,username=" +username);
+                if (user==null&&username!=null) {
                     UserDao dao = new UserDao(mContext);
-                    user = dao.getUser("a9527010");
-                    L.e("user"+user);
+                    user = dao.getUser(username);
+                    L.e(TAG,"database user"+user);
+                }
+                if (user!=null){
+                    FuLiCenterApplication.setUser(user);
                 }
                 MFGT.gotoMainActivity(SplshActivity.this);
                 finish();
