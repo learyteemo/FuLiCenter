@@ -1,5 +1,6 @@
 package cn.ucai.fulicenter.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,9 +13,12 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.ucai.filicenter.R;
+import cn.ucai.fulicenter.FuLiCenterApplication;
+import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.fragment.BoutiqueFragment;
 import cn.ucai.fulicenter.fragment.CategoryFragment;
 import cn.ucai.fulicenter.fragment.NewGoodsFragment;
+import cn.ucai.fulicenter.fragment.PersonalFragment;
 import cn.ucai.fulicenter.utils.L;
 import cn.ucai.fulicenter.utils.MFGT;
 
@@ -32,10 +36,12 @@ public class MainActivity extends BaseActivity {
     NewGoodsFragment mNewGoodsFragment;
     BoutiqueFragment mboutiqueFragment;
     CategoryFragment mcategoryFragment;
+    PersonalFragment mpersonalFragment;
     Fragment [] mfragment;
     int index;
     int currentIndex;
     RadioButton [] rbs;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
@@ -50,9 +56,11 @@ public class MainActivity extends BaseActivity {
         mNewGoodsFragment = new NewGoodsFragment();
         mboutiqueFragment = new BoutiqueFragment();
         mcategoryFragment = new CategoryFragment();
+        mpersonalFragment = new PersonalFragment();
         mfragment[0] =mNewGoodsFragment;
         mfragment[1] = mboutiqueFragment;
         mfragment[2] = mcategoryFragment;
+        mfragment[4] = mpersonalFragment;
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.fragment_container,mNewGoodsFragment)
@@ -60,6 +68,7 @@ public class MainActivity extends BaseActivity {
                 .add(R.id.fragment_container,mcategoryFragment)
                 .hide(mboutiqueFragment)
                 .hide(mcategoryFragment)
+                .hide(mpersonalFragment)
                 .show(mNewGoodsFragment)
                 .commit();
 
@@ -99,8 +108,11 @@ public class MainActivity extends BaseActivity {
                 index = 3;
                 break;
             case R.id.personal:
-                MFGT.gotoLoginActivity(this);
-//                index = 4;
+                if (FuLiCenterApplication.getUser() == null) {
+                    MFGT.gotoLoginActivity(this);
+                } else {
+                    index = 4;
+                }
                 break;
         }
         setFragment();
@@ -111,8 +123,8 @@ public class MainActivity extends BaseActivity {
     if (index!=currentIndex){
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.hide(mfragment[currentIndex]);
-        if (!mfragment[index].isAdded()){
-            ft.add(R.id.fragment_container,mfragment[index]);
+        if (!mfragment[index].isAdded()) {
+            ft.add(R.id.fragment_container, mfragment[index]);
         }
         ft.show(mfragment[index]).commit();
     }
@@ -130,9 +142,23 @@ public class MainActivity extends BaseActivity {
             }
         }
     }
-
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setFragment();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        L.e("onActivityResult,requestCode"+requestCode);
+        if (requestCode == I.REQUEST_CODE_LOGIN && FuLiCenterApplication.getUser() != null) {
+            index = 4;
+        }
     }
 }
