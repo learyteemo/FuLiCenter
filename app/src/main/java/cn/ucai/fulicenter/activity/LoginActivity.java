@@ -15,9 +15,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.ucai.filicenter.R;
+import cn.ucai.fulicenter.FuLiCenterApplication;
 import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.bean.Result;
 import cn.ucai.fulicenter.bean.User;
+import cn.ucai.fulicenter.dao.SharePrefrenceUtils;
+import cn.ucai.fulicenter.dao.UserDao;
 import cn.ucai.fulicenter.net.NetDao;
 import cn.ucai.fulicenter.net.OkHttpUtils;
 import cn.ucai.fulicenter.utils.CommonUtils;
@@ -95,33 +98,46 @@ public class LoginActivity extends BaseActivity {
        final ProgressDialog pd = new ProgressDialog(mContext);
         pd.setMessage(getResources().getString(R.string.logining));
         pd.show();
-        NetDao.Login(mContext, username, password, new OkHttpUtils.OnCompleteListener<Result>() {
+        NetDao.login(mContext, username, password, new OkHttpUtils.OnCompleteListener<String>() {
             @Override
-            public void onSuccess(Result result) {
-                pd.dismiss();
+            public void onSuccess(String str) {
+                Result result = ResultUtils.getResultFromJson(str, User.class);
                 L.e(TAG,"result="+result);
                 if (result==null){
                     CommonUtils.showLongToast(R.string.login_fail);
                 }else {
                     if (result.isRetMsg()){
-
-                        String strUser = result.getRetData().toString();
+                        User user = (User) result.getRetData();
+                        L.e(TAG,"user = "+user);
+                        /*String strUser = result.getRetData().toString();
                         OkHttpUtils<User> utils = new OkHttpUtils<>(mContext);
                         User user = utils.parseJson(strUser, User.class);
+                        */
+                        UserDao dao = new UserDao(mContext);
+
+                        boolean isSuccess = dao.saveUser(user);
+                        if (isSuccess){
+                            SharePrefrenceUtils.getInstance(mContext).saveUser(user.getMuserName());
+                            FuLiCenterApplication.setUser(user);
+                            MFGT.finish(mContext);
+                        }else {
+                            CommonUtils.showLongToast(R.string.user_database_error);
+                        }
+                        /*dao.saveUser(user);
                         L.e(TAG,"user = "+user);
-                        CommonUtils.showLongToast(R.string.login_success);
-                        MFGT.finish(mContext);
+
+                        MFGT.finish(mContext);*/
                     }else {
                          if (result.getRetCode()==I.MSG_LOGIN_UNKNOW_USER){
                              CommonUtils.showLongToast(R.string.login_fail_unknow_user);
                          }else if (result.getRetCode()==I.MSG_LOGIN_ERROR_PASSWORD){
                              CommonUtils.showLongToast(R.string.login_fail_error_password);
-
                          }else {
                              CommonUtils.showLongToast(R.string.login_fail);
                          }
                     }
                 }
+                pd.dismiss();
             }
 
             @Override

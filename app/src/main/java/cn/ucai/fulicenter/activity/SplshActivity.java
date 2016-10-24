@@ -5,15 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.ucai.filicenter.R;
+import cn.ucai.fulicenter.FuLiCenterApplication;
+import cn.ucai.fulicenter.bean.User;
+import cn.ucai.fulicenter.dao.SharePrefrenceUtils;
+import cn.ucai.fulicenter.dao.UserDao;
+import cn.ucai.fulicenter.utils.L;
 import cn.ucai.fulicenter.utils.MFGT;
 
 public class SplshActivity extends AppCompatActivity {
     static final long sleepTime = 2000;
+    SplshActivity mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splsh);
-
+        mContext = this;
     }
 
     @Override
@@ -22,6 +28,13 @@ public class SplshActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                User user =FuLiCenterApplication.getUser();
+                String username = SharePrefrenceUtils.getInstance(mContext).getUser();
+                if (user==null) {
+                    UserDao dao = new UserDao(mContext);
+                    user = dao.getUser("a9527010");
+                    L.e("user"+user);
+                }
                 MFGT.gotoMainActivity(SplshActivity.this);
                 finish();
             }

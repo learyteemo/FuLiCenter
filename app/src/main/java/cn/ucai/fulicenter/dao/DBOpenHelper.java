@@ -12,7 +12,7 @@ import cn.ucai.fulicenter.I;
 public class DBOpenHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static DBOpenHelper instance;
-    private static final String FULICENTER_USER_TABLE_CREATE = "CREATE TABLE"
+    private static final String FULICENTER_USER_TABLE_CREATE = " CREATE TABLE "
             +UserDao.USER_TABLE_NAME+" ("
             +UserDao.USER_COLUMN_NAME+" TEXT PRIMARY KEY, "
             +UserDao.USER_COLUMN_NICK+" TEXT, "

@@ -36,7 +36,7 @@ public class DBManager  {
         values.put(UserDao.USER_COLUMN_AVATAR_SUFFIX,user.getMavatarSuffix());
         values.put(UserDao.USER_COLUMN_AVATAR_LASTUPDATE_TIME,user.getMavatarLastUpdateTime());
         if (db.isOpen()){
-            return db.replace(UserDao.USER_COLUMN_AVATAR_ID,null,values)!=-1;
+            return db.replace(UserDao.USER_TABLE_NAME,null,values)!=-1;
         }
         return false;
     }
