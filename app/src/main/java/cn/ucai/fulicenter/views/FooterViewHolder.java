@@ -8,9 +8,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.ucai.filicenter.R;
 
-/**
- * Created by Administrator on 2016/10/19.
- */
+
 public class FooterViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.tvFooter)
     public TextView tvFooter;

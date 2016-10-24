@@ -10,6 +10,7 @@ import cn.ucai.fulicenter.bean.CategoryGroupBean;
 import cn.ucai.fulicenter.bean.GoodsDetailsBean;
 import cn.ucai.fulicenter.bean.NewGoodsBean;
 import cn.ucai.fulicenter.bean.Result;
+import cn.ucai.fulicenter.fragment.NewGoodsFragment;
 import cn.ucai.fulicenter.utils.MD5;
 
 /**
@@ -48,14 +49,14 @@ public class NetDao {
 
     }
     public static void downloadCategoryChild(Context context, int parentId ,OkHttpUtils.OnCompleteListener<CategoryChildBean[]>listener){
-        OkHttpUtils utils = new OkHttpUtils(context);
+        OkHttpUtils<CategoryChildBean[]> utils = new OkHttpUtils<>(context);
         utils.setRequestUrl(I.REQUEST_FIND_CATEGORY_CHILDREN)
                 .addParam(I.CategoryChild.PARENT_ID,String.valueOf(parentId))
                 .targetClass(CategoryChildBean[].class)
                 .execute(listener);
     }
     public static void downloadCategoryChild(Context context,int catId, int pageId, OkHttpUtils.OnCompleteListener<NewGoodsBean[]> listener){
-        OkHttpUtils utils = new OkHttpUtils(context);
+        OkHttpUtils<NewGoodsBean[]> utils = new OkHttpUtils<>(context);
         utils.setRequestUrl(I.REQUEST_FIND_GOODS_DETAILS)
                 .addParam(I.NewAndBoutiqueGoods.CAT_ID,String.valueOf(catId))
                 .addParam(I.PAGE_ID,String.valueOf(pageId))
@@ -73,12 +74,12 @@ public class NetDao {
                 .post()
                 .execute(listener);
     }
-    public static void Login(Context context, String username, String password, OkHttpUtils.OnCompleteListener<Result>listener){
-        OkHttpUtils<Result> utils = new OkHttpUtils<>(context);
+    public static void login(Context context, String username, String password, OkHttpUtils.OnCompleteListener<String>listener){
+        OkHttpUtils<String> utils = new OkHttpUtils<>(context);
         utils.setRequestUrl(I.REQUEST_LOGIN)
                 .addParam(I.User.USER_NAME,username)
                 .addParam(I.User.PASSWORD,MD5.getMessageDigest(password))
-                .targetClass(Result.class)
+                .targetClass(String.class)
                 .execute(listener);
     }
 

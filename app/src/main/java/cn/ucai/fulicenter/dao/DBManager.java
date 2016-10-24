@@ -67,8 +67,7 @@ public class DBManager  {
         ContentValues values = new ContentValues();
         values.put(UserDao.USER_COLUMN_NICK,user.getMuserNick());
         if (db.isOpen()){
-            result = db.update(UserDao.USER_TABLE_NAME,values,sql,new String[]{user.getMuserName()});
-
+            result = db.update(UserDao.USER_TABLE_NAME, values, sql, new String[]{user.getMuserName()});
         }
         return result>0;
     }
