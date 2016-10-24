@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#ccc">
         <RelativeLayout
             android:id="@+id/layout_set"
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true">
                 <ImageView
-
+                    android:layout_marginLeft="10dp"
                     android:src="@drawable/contactlogo"
                     android:id="@+id/ivthumb"
                     android:layout_width="80dp"
@@ -91,6 +92,11 @@
                     android:text="收藏的宝贝"
                     android:textSize="25dp"/>
             </LinearLayout>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="50dp"
+                android:background="@color/bg_gray_light"
+                android:layout_gravity="center"/>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
@@ -111,6 +117,11 @@
                     android:text="收藏的店铺"
                     android:textSize="25dp"/>
             </LinearLayout>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="50dp"
+                android:background="@color/bg_gray_light"
+                android:layout_gravity="center"/>
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
@@ -139,6 +150,7 @@
             android:layout_height="50dp"
             android:background="@color/white">
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_Order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,7 +177,7 @@
         <LinearLayout
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@color/white">
@@ -173,44 +185,47 @@
                     android:id="@+id/ivList1"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/order_list1" />
                 <ImageView
                     android:id="@+id/ivList2"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/order_list2" />
                 <ImageView
                     android:id="@+id/ivList3"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/order_list3" />
                 <ImageView
                     android:id="@+id/ivList4"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/order_list4" />
                 <ImageView
+
                     android:id="@+id/ivList5"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/order_list5" />
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@color/white">
             <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我的卡卷包"
@@ -225,10 +240,12 @@
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
         <RelativeLayout
+            android:layout_marginTop="5dp"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="50dp">
            <ImageView
+               android:layout_marginLeft="10dp"
                android:id="@+id/ivlife"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
@@ -252,10 +269,12 @@
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
         <RelativeLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white">
             <ImageView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/ivlife1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -287,10 +306,12 @@
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
         <RelativeLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/white">
             <ImageView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/ivlife123"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
