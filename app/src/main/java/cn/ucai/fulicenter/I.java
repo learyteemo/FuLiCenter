@@ -18,6 +18,8 @@ public interface I {
     int TYPE_ITEM=0;
     int TYPE_FOOTER=1;
     int REQUEST_CODE_REGISTER = 101;
+     int REQUEST_CODE_LOGIN = 102;
+    String AVATAR_SUFFIX = "m_avatar_suffix";
 
     /** BeeColud APP ID */
     String BEE_COLUD_APP_ID = "3539b590-4859-4128-87a3-5fb8b86b94f6";
@@ -416,5 +418,7 @@ public interface I {
     /** 下载精选首页图像的接口*/
     String DOWNLOAD_IMG_URL= I.SERVER_ROOT+
             REQUEST_DOWNLOAD_IMAGE+I.QUESTION+ IMAGE_URL+"=";
+    String DOWNLOAD_AVATAR_URL = I.SERVER_ROOT+
+            REQUEST_DOWNLOAD_AVATAR+I.QUESTION;
 
 }
