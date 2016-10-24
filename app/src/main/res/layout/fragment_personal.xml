@@ -6,9 +6,8 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <RelativeLayout
             android:id="@+id/layout_set"
@@ -30,7 +29,7 @@
                 android:id="@+id/ivnew"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@mipmap/del_cart"/>
+                android:src="@drawable/tb_icon_more_msg_56"/>
             <RelativeLayout
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/tvset"
@@ -39,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true">
                 <ImageView
-                    android:src="@mipmap/add_cart"
+
+                    android:src="@drawable/contactlogo"
                     android:id="@+id/ivthumb"
                     android:layout_width="80dp"
                     android:layout_height="80dp" />
@@ -58,7 +58,7 @@
                     android:id="@+id/ivQRcode"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/launcher"
+                    android:src="@drawable/tb_icon_home_qrcode_gray"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
@@ -82,8 +82,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
+                    android:textColor="@color/white"
                     android:textSize="25dp"/>
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="收藏的宝贝"
@@ -97,11 +99,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="28"
                     android:textSize="25dp"/>
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="收藏的店铺"
@@ -115,11 +119,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="58"
                     android:textSize="25dp"/>
                 <TextView
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="我的足迹"
@@ -157,95 +163,47 @@
                 android:layout_alignParentEnd="true" />
         </RelativeLayout>
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:background="@color/white"
-            >
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:background="@color/white">
                 <ImageView
+                    android:id="@+id/ivList1"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/del_cart" />
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="代付款"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    android:src="@drawable/order_list1" />
                 <ImageView
+                    android:id="@+id/ivList2"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/del_cart" />
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="代付款"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    android:src="@drawable/order_list2" />
                 <ImageView
+                    android:id="@+id/ivList3"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/del_cart" />
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="代付款"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    android:src="@drawable/order_list3" />
                 <ImageView
+                    android:id="@+id/ivList4"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/del_cart" />
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="代付款"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                    android:src="@drawable/order_list4" />
                 <ImageView
+                    android:id="@+id/ivList5"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/del_cart" />
-                <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="代付款"/>
-            </LinearLayout>
+                    android:src="@drawable/order_list5" />
         </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -274,7 +232,7 @@
                android:id="@+id/ivlife"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@mipmap/menu_item_cart_normal"
+               android:src="@drawable/center_card_coupon1"
                android:layout_centerVertical="true"/>
             <TextView
                 android:layout_toRightOf="@+id/ivlife"
@@ -301,7 +259,7 @@
                 android:id="@+id/ivlife1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/menu_item_cart_normal"
+                android:src="@drawable/center_card_coupon2"
                 android:layout_centerVertical="true"/>
             <TextView
                 android:layout_toRightOf="@+id/ivlife1"
@@ -336,7 +294,7 @@
                 android:id="@+id/ivlife123"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/menu_item_cart_normal"
+                android:src="@drawable/center_card_coupon3"
                 android:layout_centerVertical="true"/>
             <TextView
                 android:layout_toRightOf="@+id/ivlife123"

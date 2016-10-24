@@ -26,4 +26,8 @@
     <string name="login_fail_unknow_user">longin fail,unknow username</string>
     <string name="login_fail_error_password">login fial,error password</string>
     <string name="login_success">login_success</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_database_error">database,error</string>
 </resources>

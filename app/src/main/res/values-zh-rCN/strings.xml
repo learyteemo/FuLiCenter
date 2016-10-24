@@ -26,4 +26,5 @@
     <string name="login_fail_unknow_user">登录失败，账号不存在</string>
     <string name="login_fail_error_password">登录失败，错误用户名或密码</string>
     <string name="login_success">登录成功</string>
+    <string name="user_database_error">数据库登录异常</string>
 </resources>
