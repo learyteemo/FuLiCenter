@@ -24,12 +24,15 @@ import cn.ucai.fulicenter.utils.MFGT;
  * A simple {@link Fragment} subclass.
  */
 public class PersonalFragment extends BaseFragment {
-private static final String TAG = PersonalFragment.class.getSimpleName();
+    private static final String TAG = PersonalFragment.class.getSimpleName();
 
     @Bind(R.id.ivthumb)
     ImageView mivthumb;
     TextView mTvUserName;
     MainActivity mContext;
+    @Bind(R.id.tvset)
+    TextView tvset;
+    User user;
     public PersonalFragment() {
         // Required empty public constructor
     }
@@ -43,7 +46,7 @@ private static final String TAG = PersonalFragment.class.getSimpleName();
         ButterKnife.bind(this, view);
         mContext = (MainActivity) getActivity();
         mTvUserName = (TextView) view.findViewById(R.id.tvUserName);
-        super.onCreateView(inflater,container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         return view;
     }
 
@@ -54,12 +57,12 @@ private static final String TAG = PersonalFragment.class.getSimpleName();
 
     @Override
     protected void initData() {
-        User user = FuLiCenterApplication.getUser();
-        L.e(TAG,"user="+user);
-        if (user==null){
+        user = FuLiCenterApplication.getUser();
+        L.e(TAG, "user=" + user);
+        if (user == null) {
             MFGT.gotoLoginActivity(mContext);
-        }else {
-            ImageLoader.setAvatar(ImageLoader.getAvatarUrl(user),mContext,mivthumb);
+        } else {
+            ImageLoader.setAvatar(ImageLoader.getAvatarUrl(user), mContext, mivthumb);
             mTvUserName.setText(user.getMuserNick());
         }
     }
@@ -69,13 +72,25 @@ private static final String TAG = PersonalFragment.class.getSimpleName();
 
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
 
-    @OnClick(R.id.tvset)
+    @OnClick({R.id.tvset,R.id.layout_title})
     public void onClick() {
+        MFGT.gotoPersonalSettingActivity(mContext);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        user = FuLiCenterApplication.getUser();
+        if (user != null){
+            ImageLoader.setAvatar(ImageLoader.getAvatarUrl(user), mContext, mivthumb);
+            mTvUserName.setText(user.getMuserNick());
+        }
     }
 }

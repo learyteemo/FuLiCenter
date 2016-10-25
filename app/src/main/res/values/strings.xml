@@ -30,4 +30,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_database_error">database,error</string>
+    <string name="personal">user,personal</string>
+    <string name="update_user_nick">update</string>
+    <string name="update_user_nick_fail_unmodify">fail</string>
+    <string name="update_user_nick_fail">update user nick fail</string>
+    <string name="update_user_nick_success">success</string>
+    <string name="update_user_avarar">avatar</string>
+    <string name="update_user_avatar_fail">fail</string>
+    <string name="update_user_success">success</string>
 </resources>

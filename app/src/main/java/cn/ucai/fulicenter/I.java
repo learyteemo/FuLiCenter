@@ -19,6 +19,7 @@ public interface I {
     int TYPE_FOOTER=1;
     int REQUEST_CODE_REGISTER = 101;
      int REQUEST_CODE_LOGIN = 102;
+    int REQUEST_CODE_NICK = 103;
     String AVATAR_SUFFIX = "m_avatar_suffix";
 
     /** BeeColud APP ID */

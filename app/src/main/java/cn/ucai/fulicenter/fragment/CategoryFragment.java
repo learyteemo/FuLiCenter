@@ -34,7 +34,7 @@ public class CategoryFragment extends BaseFragment {
     MainActivity mContext;
     ArrayList<CategoryGroupBean> mGroupList;
     ArrayList<ArrayList<CategoryChildBean>> mChildList;
-int groupCount;
+    int groupCount;
     public CategoryFragment() {
         // Required empty public constructor
     }

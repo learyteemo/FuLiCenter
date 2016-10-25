@@ -27,4 +27,12 @@
     <string name="login_fail_error_password">登录失败，错误用户名或密码</string>
     <string name="login_success">登录成功</string>
     <string name="user_database_error">数据库登录异常</string>
+    <string name="personal">登录个人中心</string>
+    <string name="update_user_nick">更新昵称</string>
+    <string name="update_user_nick_fail_unmodify">此为用户名不能更改？失败</string>
+    <string name="update_user_nick_fail">跟新昵称失败</string>
+    <string name="update_user_nick_success">跟新昵称成功</string>
+    <string name="update_user_avarar">更新头像</string>
+    <string name="update_user_avatar_fail">更新头像失败</string>
+    <string name="update_user_success">更新头像成功</string>
 </resources>
