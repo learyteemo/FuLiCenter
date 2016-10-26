@@ -18,9 +18,9 @@ public class SplshActivity extends AppCompatActivity {
     SplshActivity mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splsh);
         mContext = this;
+        super.onCreate(savedInstanceState);
     }
     @Override
     protected void onStart() {
