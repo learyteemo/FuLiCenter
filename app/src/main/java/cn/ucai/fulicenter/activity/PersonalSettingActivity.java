@@ -116,10 +116,13 @@ OnSetAvatarListener mOnSetAvatarListener;
         if (resultCode != RESULT_OK) {
             return;
         }
-        mOnSetAvatarListener.setAvatar(requestCode,data,mivThumb);
         if (requestCode ==  I.REQUEST_CODE_NICK) {
             CommonUtils.showLongToast(R.string.update_user_nick_success);
+            return;
         }
+        
+        mOnSetAvatarListener.setAvatar(requestCode,data,mivThumb);
+
         if (requestCode == OnSetAvatarListener.REQUEST_CROP_PHOTO) {
             updateAvatar();
         }
