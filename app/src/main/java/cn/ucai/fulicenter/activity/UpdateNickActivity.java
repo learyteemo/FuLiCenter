@@ -89,24 +89,15 @@ public class UpdateNickActivity extends BaseActivity {
                     if (result.isRetMsg()){
                         User user = (User) result.getRetData();
                         L.e(TAG,"user = "+user);
-                        /*String strUser = result.getRetData().toString();
-                        OkHttpUtils<User> utils = new OkHttpUtils<>(mContext);
-                        User user = utils.parseJson(strUser, User.class);
-                        */
                         UserDao dao = new UserDao(mContext);
                         boolean isSuccess = dao.updateUser(user);
                         if (isSuccess){
-//                            SharePrefrenceUtils.getInstance(mContext).saveUser(user.getMuserName());
                             FuLiCenterApplication.setUser(user);
                             setResult(RESULT_OK);
                             MFGT.finish(mContext);
                         }else {
                             CommonUtils.showLongToast(R.string.user_database_error);
                         }
-                        /*dao.saveUser(user);
-                        L.e(TAG,"user = "+user);
-
-                        MFGT.finish(mContext);*/
                     }else {
                         if (result.getRetCode()== I.MSG_LOGIN_UNKNOW_USER){
                             CommonUtils.showLongToast(R.string.update_user_nick_fail_unmodify);

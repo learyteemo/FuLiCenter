@@ -149,5 +149,9 @@ public class CollectActivity extends BaseActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
+    }
 }
