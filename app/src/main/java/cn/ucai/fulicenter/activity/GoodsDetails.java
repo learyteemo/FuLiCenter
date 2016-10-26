@@ -41,6 +41,9 @@ public class GoodsDetails extends BaseActivity {
     @Bind(R.id.ivGoodsDetailCollect)
     ImageView mivGoodsDetailCollect;
     boolean isCollected = false;
+    @Bind(R.id.ivGoodsDetailShare)
+    ImageView ivGoodsDetailShare;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_goods_details);
@@ -65,6 +68,49 @@ public class GoodsDetails extends BaseActivity {
     @Override
     protected void initView() {
 
+    }
+
+    @OnClick(R.id.ivGoodsDetailCollect)
+    public void onCollectClick() {
+        final User user = FuLiCenterApplication.getUser();
+        if (user == null) {
+            MFGT.gotoLoginActivity(mContext);
+        } else {
+            if (isCollected) {
+                NetDao.deleteCollect(mContext, user.getMuserName(), goodsId, new OkHttpUtils.OnCompleteListener<MessageBean>() {
+                    @Override
+                    public void onSuccess(MessageBean result) {
+                        if (result != null && result.isSuccess()) {
+                            isCollected = !isCollected;
+                            updateGoodsCollectStatus();
+                            CommonUtils.showLongToast(user.getMuserNick() + "成功取消了收藏商品");
+                        }
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                });
+            } else {
+                NetDao.addCollect(mContext, user.getMuserName(), goodsId, new OkHttpUtils.OnCompleteListener<MessageBean>() {
+                    @Override
+                    public void onSuccess(MessageBean result) {
+                        if (result != null && result.isSuccess()) {
+                            isCollected = !isCollected;
+                            updateGoodsCollectStatus();
+                            CommonUtils.showLongToast(user.getMuserNick() + "成功收藏了商品");
+
+                        }
+                    }
+
+                    @Override
+                    public void onError(String error) {
+
+                    }
+                });
+            }
+        }
     }
 
     @Override
