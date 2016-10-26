@@ -98,4 +98,23 @@ public class User implements Serializable{
                 ", mavatarLastUpdateTime='" + mavatarLastUpdateTime + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (!muserName.equals(user.muserName)) return false;
+        return mavatarLastUpdateTime.equals(user.mavatarLastUpdateTime);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = muserName.hashCode();
+        result = 31 * result + mavatarLastUpdateTime.hashCode();
+        return result;
+    }
 }

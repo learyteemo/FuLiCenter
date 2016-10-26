@@ -73,6 +73,7 @@
             android:layout_below="@+id/ivthumb"
             android:background="@drawable/tb_btn_login_orange_normal">
             <LinearLayout
+                android:id="@+id/layout_collects"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
@@ -80,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center">
                 <TextView
+                    android:id="@+id/tvCollect"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"

@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:text="加载中..."
     android:textSize="25dp"
+    android:visibility="gone"
     android:gravity="center_horizontal">
 
 </TextView>

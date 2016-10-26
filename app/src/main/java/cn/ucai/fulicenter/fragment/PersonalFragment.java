@@ -31,7 +31,6 @@ import cn.ucai.fulicenter.utils.ResultUtils;
  */
 public class PersonalFragment extends BaseFragment {
     private static final String TAG = PersonalFragment.class.getSimpleName();
-
     @Bind(R.id.ivthumb)
     ImageView mivthumb;
     TextView mTvUserName;
@@ -149,5 +148,10 @@ public class PersonalFragment extends BaseFragment {
             syncUserInfo();
             syncCollectsCount();
         }
+    }
+
+    @OnClick(R.id.layout_collects)
+    public void onClickCollects() {
+        MFGT.gotoCollectsActivity(mContext);
     }
 }

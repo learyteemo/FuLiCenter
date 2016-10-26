@@ -35,4 +35,6 @@
     <string name="update_user_avarar">更新头像</string>
     <string name="update_user_avatar_fail">更新头像失败</string>
     <string name="update_user_success">更新头像成功</string>
+    <string name="collect_title">收藏的宝</string>
+    <string name="delete_collect_fail">删除收藏失败</string>
 </resources>

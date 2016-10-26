@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,10 +14,18 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.ucai.filicenter.R;
+import cn.ucai.fulicenter.FuLiCenterApplication;
 import cn.ucai.fulicenter.I;
 import cn.ucai.fulicenter.bean.CollectBean;
+import cn.ucai.fulicenter.bean.MessageBean;
+import cn.ucai.fulicenter.net.NetDao;
+import cn.ucai.fulicenter.net.OkHttpUtils;
+import cn.ucai.fulicenter.utils.CommonUtils;
 import cn.ucai.fulicenter.utils.ImageLoader;
+import cn.ucai.fulicenter.utils.L;
+import cn.ucai.fulicenter.utils.MFGT;
 import cn.ucai.fulicenter.views.FooterViewHolder;
 
 /**
@@ -27,8 +36,6 @@ public class CollectAdapter extends RecyclerView.Adapter {
     Context mcontext;
     RecyclerView parent;
     boolean isMore;
-
-
     public CollectAdapter(List<CollectBean> List, Context context) {
         mcontext = context;
         mList = new ArrayList<>();
@@ -73,6 +80,8 @@ public class CollectAdapter extends RecyclerView.Adapter {
         goodsViewHolder.tvGoodsName.setText(newGoods.getGoodsName());
         goodsViewHolder.ivDelete.setImageResource(R.mipmap.delete);
         ImageLoader.downloadImg(mcontext, goodsViewHolder.ivGoodsThumb, newGoods.getGoodsThumb());
+        goodsViewHolder.itemNewGoods.setTag(newGoods);
+
     }
 
     private int getFooter() {
@@ -107,18 +116,46 @@ public class CollectAdapter extends RecyclerView.Adapter {
     }
 
 
-    static class CollectViewHolder extends RecyclerView.ViewHolder {
+     class CollectViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.ivDelete)
         ImageView ivDelete;
         @Bind(R.id.ivGoods_Thumb)
         ImageView ivGoodsThumb;
         @Bind(R.id.tvGoods_Name)
         TextView tvGoodsName;
-
+        @Bind(R.id.item_newGoods)
+        LinearLayout itemNewGoods;
 
         public CollectViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+        @OnClick(R.id.item_newGoods)
+        public void onGoodsItemClick(){
+            CollectBean goods = (CollectBean) itemView.getTag();
+            MFGT.gotoGoodsDetailsActivity(mcontext,goods.getGoodsId());
+        }
+        @OnClick(R.id.ivDelete)
+        public void deleteCollect(){
+            final CollectBean goods = (CollectBean) itemView.getTag();
+            String name = FuLiCenterApplication.getUser().getMuserName();
+            NetDao.deleteCollect(mcontext, name, goods.getGoodsId(), new OkHttpUtils.OnCompleteListener<MessageBean>() {
+                @Override
+                public void onSuccess(MessageBean result) {
+                    if (result != null) {
+                        mList.remove(goods);
+                        notifyDataSetChanged();
+                    } else {
+                        CommonUtils.showLongToast(result!=null?result.getMsg()
+                        :mcontext.getResources().getString(R.string.delete_collect_fail));
+                    }
+                }
+                @Override
+                public void onError(String error) {
+                    L.e("error"+error);
+                    CommonUtils.showLongToast(mcontext.getResources().getString(R.string.delete_collect_fail));
+                }
+            });
         }
     }
 }
