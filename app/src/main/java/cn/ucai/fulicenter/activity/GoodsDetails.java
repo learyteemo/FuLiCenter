@@ -242,4 +242,8 @@ public class GoodsDetails extends BaseActivity {
     public void onClickShare() {
         showShare();
     }
+
+    @OnClick(R.id.GoodsDetailLayout)
+    public void onClickCart() {
+    }
 }
