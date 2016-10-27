@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.ucai.fulicenter.fragment.CartFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/SwipeRefreshLayout">
+        <LinearLayout
+            android:id="@+id/layoutCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvRefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="加载中..."
+                android:visibility="gone"
+                android:textSize="25dp"
+                android:gravity="center_horizontal" />
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RecyclerView">
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_cart_nothing"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:text="购物车空空"
+            android:gravity="center"/>
+<RelativeLayout
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true">
+
+    <TextView
+        android:layout_toLeftOf="@+id/account"
+        android:id="@+id/tv_cart_count_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="￥" />
+
+
+    <TextView
+        android:layout_marginRight="10dp"
+        android:id="@+id/tv_cart_save_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥"
+        android:layout_toLeftOf="@+id/account"
+        android:layout_below="@+id/tv_cart_count_price"/>
+    <TextView
+        android:layout_alignParentRight="true"
+        android:id="@+id/account"
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="结算"
+        android:background="@color/main_orange"/>
+</RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
