@@ -72,6 +72,29 @@ public class GoodsDetails extends BaseActivity {
 
     }
 
+    @OnClick(R.id.iv_bg_cart_selected)
+    public void onaddCart(){
+        final User user = FuLiCenterApplication.getUser();
+        if (user!=null){
+            NetDao.addCart(mContext, user.getMuserName(), goodsId, new OkHttpUtils.OnCompleteListener<MessageBean>() {
+                @Override
+                public void onSuccess(MessageBean result) {
+                    if (result != null && result.isSuccess()) {
+                        CommonUtils.showLongToast(R.string.add_goods_success);
+                    } else {
+                        CommonUtils.showLongToast(R.string.add_goods_fail);
+                    }
+                }
+                @Override
+                public void onError(String error) {
+                    L.e("goods="+error);
+                    CommonUtils.showLongToast(R.string.add_goods_fail);
+
+                }
+            });
+        }
+
+    }
     @OnClick(R.id.ivGoodsDetailCollect)
     public void onCollectClick() {
         final User user = FuLiCenterApplication.getUser();

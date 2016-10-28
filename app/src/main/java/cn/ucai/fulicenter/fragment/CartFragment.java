@@ -240,6 +240,12 @@ public class CartFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
+
     private int getPrice(String price){
         price = price.substring(price.indexOf("￥")+1);
         return Integer.valueOf(price);

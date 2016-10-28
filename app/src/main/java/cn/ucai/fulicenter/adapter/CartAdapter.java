@@ -150,14 +150,12 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                        tvCartAddNum.setText("("+(mList.get(posotion).getCount())+")");
                    }
                }
-
                @Override
                public void onError(String error) {
-
                }
            });
        }
-         @OnClick(R.id.iv_cart_thumb)
+         @OnClick({R.id.iv_cart_thumb,R.id.tv_cart_good_name})
          public void gotoDeail(){
              final int posotion = (int) ivCartAdd.getTag();
              CartBean cart=mList.get(posotion);
@@ -177,7 +175,6 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                              tvCartAddNum.setText("(" + (mList.get(posotion).getCount()) + ")");
                          }
                      }
-
                      @Override
                      public void onError(String error) {
 
@@ -193,7 +190,6 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                              notifyDataSetChanged();
                          }
                      }
-
                      @Override
                      public void onError(String error) {
 
@@ -201,6 +197,5 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                  });
              }
          }
-
     }
 }

@@ -37,4 +37,6 @@
     <string name="update_user_success">更新头像成功</string>
     <string name="collect_title">收藏的宝</string>
     <string name="delete_collect_fail">删除收藏失败</string>
+    <string name="add_goods_success">添加商品成功</string>
+    <string name="add_goods_fail">添加失败</string>
 </resources>
