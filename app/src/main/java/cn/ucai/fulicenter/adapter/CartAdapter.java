@@ -157,6 +157,12 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                }
            });
        }
+         @OnClick(R.id.iv_cart_thumb)
+         public void gotoDeail(){
+             final int posotion = (int) ivCartAdd.getTag();
+             CartBean cart=mList.get(posotion);
+             MFGT.gotoGoodsDetailsActivity(mcontext,cart.getGoodsId());
+         }
          @OnClick(R.id.iv_cart_del)
          public void delCart(){
              final int posotion = (int) ivCartDel.getTag();
